@@ -20,7 +20,7 @@ const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }
                     <p>{priceBangla(products.length)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
                 </div>
             </div>
-            <div className='grid grid-cols-3 gap-3 mt-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10'>
                 {
                     products.map(product => <ProductCard key={product.id} product={product} />)
                 }

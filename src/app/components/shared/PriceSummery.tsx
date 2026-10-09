@@ -8,7 +8,7 @@ import PriceChange from './PriceChange';
 const PriceSummery = ({ products }: { products: IProduct[] }) => {
 
     return (
-        <Marquee pauseOnHover={true} speed={100} className='py-4 text-sm'>
+        <Marquee pauseOnHover={true} speed={100} className='py-2 mt-3 text-sm bg-base-200 rounded-md'>
             {
                 products.map(product => <Link className='flex' key={product.id} href={`/product/${product.id}`}>
                     <div className='px-3 flex gap-1'>

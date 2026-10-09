@@ -15,11 +15,10 @@ export default async function Home() {
 
       <Banner />
 
-
       {/* up product */}
       <section className="my-15">
         <h1 className='mb-5 font-bold text-2xl flex gap-2'><FaCaretUp color='red' />আজ দাম বেড়েছে</h1>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           {
             filterProducts('up').slice(0, 6).map(product => <ProductCard key={product.id}
               product={product}
@@ -31,7 +30,7 @@ export default async function Home() {
       {/* down product */}
       <section className="my-15">
         <h1 className='mb-5 font-bold text-2xl flex gap-2'><FaCaretDown color='green' />আজ দাম কমেছে</h1>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           {
             filterProducts('down').slice(0, 6).map(product => <ProductCard key={product.id}
               product={product}
@@ -47,7 +46,7 @@ export default async function Home() {
       <section className="my-15">
         <h1 className='mb-2 font-bold text-2xl flex gap-2'>সব পণ্য</h1>
         <p className="mb-5">মোট {priceBangla(products.length)}টি পণ্য দেখানো হচ্ছে</p>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
           {
             products.map(product => <ProductCard key={product.id}
               product={product}
@@ -55,7 +54,7 @@ export default async function Home() {
           }
         </div>
       </section>
-      
+
     </section>
   );
 }

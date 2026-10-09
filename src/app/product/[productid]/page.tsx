@@ -31,22 +31,22 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: str
                 <Link href={`/category/${product.category}`}>{product.categoryNameBn}</Link> &gt;
                 <p>{product.nameBn}</p>
             </div>
-            <div className='bg-base-200 rounded-2xl p-8 flex justify-between'>
+            <div className='bg-base-200 rounded-2xl p-2 lg:p-8 flex justify-between'>
                 <div className='flex items-center gap-3'>
-                    <div className='bg-primary/5 p-5 h-fit rounded-2xl text-4xl'>
+                    <div className='bg-primary/5 p-2 lg:p-5 h-fit rounded-2xl text-2xl lg:text-4xl'>
                         {product.image}
                     </div>
                     <div>
-                        <h1 className='font-bold text-2xl'>{product.nameBn}</h1>
-                        <p className='text-black/50'>প্রতি {unitBangla(product.unit)} · {product.categoryNameBn}</p>
-                        <p>গতকালের তুলনায় আজ দাম {priceDiff(product.today, product.yesterday)}</p>
+                        <h1 className='font-bold text-lg lg:text-2xl'>{product.nameBn}</h1>
+                        <p className='text-xs lg:text-base text-black/50'>প্রতি {unitBangla(product.unit)} · {product.categoryNameBn}</p>
+                        <p className='text-xs lg:text-base'>গতকালের তুলনায় আজ দাম {priceDiff(product.today, product.yesterday)}</p>
                     </div>
                 </div>
-                <div className='bg-primary/10 p-3 rounded-2xl flex flex-col items-center'>
-                    <p>আজকের দাম</p>
-                    <h1 className='text-4xl font-bold'>{priceBangla(product.today)}</h1>
-                    <p>টাকা / {unitBangla(product.unit)}</p>
-                    <p className='text-lg'><PriceChange change={product.change} /></p>
+                <div className='bg-primary/10 p-3 rounded-2xl flex flex-col items-center w-1/2 lg:w-fit'>
+                    <p className='text-xs lg:text-base text-center'>আজকের দাম</p>
+                    <h1 className='text-2xl lg:text-4xl font-bold'>{priceBangla(product.today)}</h1>
+                    <p className='text-xs lg:text-base text-center'>টাকা / {unitBangla(product.unit)}</p>
+                    <p className='text-xs lg:text-lg'><PriceChange change={product.change} /></p>
                 </div>
             </div>
 
@@ -57,20 +57,20 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: str
             <div className='bg-base-200 p-5 rounded-2xl space-y-10'>
                 <h1 className='font-bold text-2xl'>দামের সারসংক্ষেপ</h1>
                 <div className='grid grid-cols-3 gap-2 items-center'>
-                    <div className='border border-black/10 rounded-2xl p-5 space-y-1'>
-                        <p>সর্বনিম্ন দাম</p>
-                        <h2 className='font-bold text-lg text-primary'>{priceBangla(markets[0].min)} টাকা</h2>
-                        <p>সবচেয়ে কম দামের বাজার</p>
+                    <div className='border border-black/10 rounded-2xl h-full p-2 lg:p-5 space-y-1'>
+                        <p className='text-center lg:text-left text-sm lg:text-base'>সর্বনিম্ন দাম</p>
+                        <h2 className='font-bold text-base lg:text-lg text-primary text-center lg:text-left  '>{priceBangla(markets[0].min)} টাকা</h2>
+                        <p className='text-xs text-center lg:text-base lg:text-left'>সবচেয়ে কম দামের বাজার</p>
                     </div>
-                    <div className='border border-black/10 rounded-2xl p-5 space-y-1'>
-                        <p>সর্বাধিক দাম</p>
-                        <h2 className='font-bold text-lg text-error'>{priceBangla(markets[markets.length - 1].max)} টাকা</h2>
-                        <p>সবচেয়ে বেশি দামের বাজার</p>
+                    <div className='border border-black/10 rounded-2xl h-full p-2 lg:p-5 space-y-1'>
+                        <p className='text-center lg:text-left text-sm lg:text-base'>সর্বাধিক দাম</p>
+                        <h2 className='font-bold text-base lg:text-lg text-error text-center lg:text-left '> {priceBangla(markets[markets.length - 1].max)} টাকা</h2>
+                        <p className='text-xs text-center lg:text-base lg:text-left'>সবচেয়ে বেশি দামের বাজার</p>
                     </div>
-                    <div className='border border-black/10 rounded-2xl p-5 space-y-1'>
-                        <p>গড় দাম</p>
-                        <h2 className='font-bold text-lg text-primary'>{halfNumberDisplay(Math.round(((markets[0].min + markets[markets.length - 1].max) / 2) * 2) / 2)} টাকা </h2>
-                        <p>প্রতি {unitBangla(product.unit)}-এর হিসাবে</p>
+                    <div className='border border-black/10 rounded-2xl h-full p-2 lg:p-5 space-y-1'>
+                        <p className='text-center lg:text-left text-sm lg:text-base'>গড় দাম</p>
+                        <h2 className='font-bold text-base lg:text-lg text-primary text-center lg:text-left  '>{halfNumberDisplay(Math.round(((markets[0].min + markets[markets.length - 1].max) / 2) * 2) / 2)} টাকা </h2>
+                        <p className='text-xs text-center lg:text-base lg:text-left'>প্রতি {unitBangla(product.unit)}-এর হিসাবে</p>
                     </div>
                 </div>
 

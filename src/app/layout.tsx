@@ -3,6 +3,8 @@ import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
+import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -22,13 +24,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="bazar-dor"
       className={`${hindSiliguri.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="container mx-auto px-5">
+      <body className="min-h-screen flex flex-col">
 
+        <Navbar />
+        <main className="container mx-auto px-5 grow">
           {children}
         </main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
