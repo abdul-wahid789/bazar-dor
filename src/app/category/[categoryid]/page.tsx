@@ -1,10 +1,8 @@
 import CategoryProduct from '@/app/components/category/CategoryProduct';
-import ProductCard from '@/app/components/shared/ProductCard';
 import { categoryProductPromise } from '@/lib/foods';
 import { IProduct } from '@/types/foods';
 import { priceBangla } from '@/utils/englishBangla';
-import { Label, ListBox } from '@heroui/react';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }> }) => {
     const { categoryid } = await params

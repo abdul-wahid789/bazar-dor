@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BazarDor
 
-## Getting Started
+## Short Description
+**BazarDor** is a modern, responsive web application designed to track and display the daily market prices of essential commodities in Bangladesh. The platform provides users with real-time insights into price fluctuations, category-based filtering, and market-specific pricing across different local bazars. It features secure authentication, interactive UI elements, and full support for Bengali localized formatting.
 
-First, run the development server:
+**Live Demo:** [Insert Your Deployed Vercel Link Here]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Secure Authentication & Smart Routing**
+   Implemented robust authentication using **Better Auth**, supporting Email/Password, Google, and GitHub logins. Includes a custom Next.js middleware proxy that protects specific routes (like `/product/[slug]`) and automatically redirects users back to their intended page (`callbackUrl`) after a successful login.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Dynamic Price Ticker & Market Trends**
+   Features an infinite-scrolling marquee in the navbar displaying live price updates. The home page dynamically highlights daily market trends, categorizing products into "আজ দাম বেড়েছে ▲" (Top Risers) and "আজ দাম কমেছে ▼" (Top Fallers).
 
-## Learn More
+3. **Advanced Sorting with Bengali Numerals**
+   Includes a custom sorting feature allowing users to order category items by price (Low to High / High to Low). The sorting algorithm features custom utility functions designed to accurately parse and compute native Bengali numerals.
 
-To learn more about Next.js, take a look at the following resources:
+4. **Detailed Market Analytics (Protected)**
+   Authenticated users gain access to comprehensive product detail pages showing minimum, maximum, and average prices, alongside a detailed breakdown of prices across various local markets.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Modern, Responsive UI/UX**
+   Built with a mobile-first approach ensuring perfect responsiveness across desktop, tablet, and mobile devices. Features beautiful skeleton loading states, smooth scrolling hero sections, custom Bengali 404 error pages, and interactive form validation using HeroUI.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. **Profile Management**
+   A dedicated user profile dashboard where authenticated users can view their current session details and update their personal information securely.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript / JavaScript
+- **Styling & UI:** Tailwind CSS, DaisyUI, HeroUI
+- **Authentication:** Better Auth (Email/Password, Social Providers)
+- **Icons:** React Icons (`react-icons`)
+- **Notifications:** React Hot Toast / Custom Toast Utilities
+- **Deployment:** Vercel
+

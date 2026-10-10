@@ -4,8 +4,6 @@ import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
 import { Toaster } from "react-hot-toast";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],

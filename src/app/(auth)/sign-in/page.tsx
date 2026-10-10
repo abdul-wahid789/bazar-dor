@@ -1,9 +1,9 @@
 'use client'
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 
-import { Button, Description, FieldError, FieldGroup, Fieldset, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
+import { Button, FieldError, FieldGroup, Fieldset, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { signIn, signUp } from '@/lib/auth-client';
+import { signIn } from '@/lib/auth-client';
 import { errorToast, successToast } from '@/app/components/shared/Toast';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';

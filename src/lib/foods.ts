@@ -2,17 +2,14 @@ import { ICategory, IProduct } from "@/types/foods";
 
 const BASE_URL = "https://openapi.programming-hero.com/api/bazardor"
 
-
 async function fetcher(url: string) {
     try {
-        const res = await fetch(url, { next: { revalidate: 3600 } })
+        const res = await fetch(url)
         const data = await res.json()
         return { data, error: "" }
     } catch (e) {
         return { data: [], error: String(e) }
     }
-
-
 
     // try {
     //     // Slow down by 2000 milliseconds (2 seconds) ONLY in development
