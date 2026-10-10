@@ -8,6 +8,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { IoMdExit } from 'react-icons/io';
 import { errorToast, successToast } from './Toast';
 import { FaUser } from 'react-icons/fa';
+import Image from 'next/image';
 
 const SessionUser = () => {
     const { data: session, isPending } = useSession();
@@ -48,7 +49,7 @@ const SessionUser = () => {
                             {session.user.image ? (
                                 <div className="avatar">
                                     <div className="w-8 rounded-full">
-                                        <img alt="User Avatar" src={session.user.image} />
+                                        <Image alt="User Avatar" src={session.user.image} width={24} height={24}/>
                                     </div>
                                 </div>
                             ) : (
@@ -73,7 +74,7 @@ const SessionUser = () => {
                                 <span className="text-xs font-normal text-base-content/60">{session.user.email}</span>
                             </li>
 
-                            <li><Link href="/settings" className='text-base'><FaUser className='text-primary' /> আমার প্রোফাইল</Link></li>
+                            <li><Link href="/profile" className='text-base'><FaUser className='text-primary' /> আমার প্রোফাইল</Link></li>
                             <li>
                                 <button
                                     onClick={handleSignOut}

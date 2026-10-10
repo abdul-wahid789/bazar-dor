@@ -1,27 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { betterFetch } from "@better-fetch/fetch";
-import type { Session } from "better-auth/types";
+import { auth } from "./lib/auth";
+import { headers } from "next/headers";
 
 export async function proxy(request: NextRequest) {
 
-    const { data: session } = await betterFetch<Session>(
-        "/api/auth/get-session",
-        {
-            baseURL: request.nextUrl.origin,
-            headers: {
-                cookie: request.headers.get("cookie") || "",
-            },
-        }
-    );
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
 
     const isProtectedRoute = request.nextUrl.pathname.startsWith("/product/");
 
     if (!session && isProtectedRoute) {
-        const signInUrl = request.nextUrl.clone();
-        signInUrl.pathname = "/sign-in";
-        signInUrl.searchParams.set("callbackUrl", request.nextUrl.pathname);
-        return NextResponse.redirect(signInUrl);
+        return NextResponse.redirect(
+            new URL(`/sign-in?callbackUrl=${request.nextUrl.pathname}`, request.url)
+        );
     }
 
     return NextResponse.next();

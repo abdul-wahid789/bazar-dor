@@ -1,20 +1,15 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { Suspense } from 'react';
-import Logo from '/public/logo-icon.png'
 import TodayDate from './TodayDate';
 import NavLinks from './NavLinks';
 import { categoriesPromise, productsPromise } from '@/lib/foods';
 import PriceSummery from './PriceSummery';
-import { useSession } from '@/lib/auth-client';
 import SessionUser from './SessionUser';
-import { auth } from '@/lib/auth';
-import { headers } from 'next/headers';
 
 const Navbar = async () => {
 
     const { data: categories } = await categoriesPromise()
-    const { data: products } = await productsPromise()
+    const { data: products, error } = await productsPromise()
 
 
     return (
@@ -39,8 +34,13 @@ const Navbar = async () => {
 
             </div>
             {/* links  */}
-            <NavLinks categories={categories} />
-            <PriceSummery products={products} />
+            <Suspense fallback={<div className="animate-pulse w-32 h-8 bg-base-200 rounded-md"></div>}>
+                <NavLinks categories={categories} />
+            </Suspense>
+            {
+                error ? <></>
+                    : <PriceSummery products={products} />
+            }
         </nav>
     );
 };

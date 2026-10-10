@@ -6,10 +6,9 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const NavLinks = ({ categories }: { categories: ICategory[] }) => {
-    const param: string = usePathname()
+    const param: string = usePathname();
     const active = (url: string): string => {
         if (param === url) {
-
             return "!bg-primary text-primary-content"
         }
         return ""

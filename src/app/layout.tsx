@@ -22,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="bazar-dor"
-      className={`${hindSiliguri.className} h-full antialiased`}
+      className={`${hindSiliguri.className} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col">
 

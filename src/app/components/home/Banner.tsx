@@ -2,6 +2,7 @@ import React from 'react';
 import TodayDate from '../shared/TodayDate';
 import Image from 'next/image';
 import BannerImg from "@/assets/bazar-hero.png"
+import Link from 'next/link';
 
 
 
@@ -18,7 +19,7 @@ const Banner = () => {
                 <p className="text-black/50 w-full lg:w-120 text-center lg:text-left">চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম —
                     বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং
                     দামের পরিবর্তন এক জায়গায়।</p>
-                <button className="btn btn-primary btn-lg">সব পণ্য দেখুন</button>
+                <Link href='#allProduct' ><button className="btn btn-primary btn-lg">সব পণ্য দেখুন</button></Link>
             </div>
             <div>
                 <Image src={BannerImg} alt="banner" width={500} height={500}

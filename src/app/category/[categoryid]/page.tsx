@@ -1,7 +1,9 @@
+import CategoryProduct from '@/app/components/category/CategoryProduct';
 import ProductCard from '@/app/components/shared/ProductCard';
 import { categoryProductPromise } from '@/lib/foods';
 import { IProduct } from '@/types/foods';
 import { priceBangla } from '@/utils/englishBangla';
+import { Label, ListBox } from '@heroui/react';
 import React, { Suspense } from 'react';
 
 const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }> }) => {
@@ -10,7 +12,7 @@ const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }
 
 
     return (
-        <section>
+        <section className='space-y-10'>
             <div className='bg-base-200 rounded-2xl p-5 flex gap-2 items-center'>
                 <p className='text-4xl'>
                     {products[0].image}
@@ -20,11 +22,8 @@ const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }
                     <p>{priceBangla(products.length)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10'>
-                {
-                    products.map(product => <ProductCard key={product.id} product={product} />)
-                }
-            </div>
+
+            <CategoryProduct products={products} />
         </section>
     );
 };
