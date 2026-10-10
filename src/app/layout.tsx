@@ -5,6 +5,7 @@ import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
+import Loading from "./loading";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+
   return (
     <html
       lang="en"
@@ -25,6 +27,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${hindSiliguri.className} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col">
+
+        {/* <Loading /> */}
 
         <Navbar />
         <main className="container mx-auto px-5 grow">

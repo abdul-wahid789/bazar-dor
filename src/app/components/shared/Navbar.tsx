@@ -5,13 +5,10 @@ import NavLinks from './NavLinks';
 import { categoriesPromise, productsPromise } from '@/lib/foods';
 import PriceSummery from './PriceSummery';
 import SessionUser from './SessionUser';
+import NavLinkSkeleton from '../skeleton/NavLinkSkeleton';
+import MarqueeSkeleton from '../skeleton/MarqueeSkeleton';
 
-const Navbar = async () => {
-
-    const { data: categories } = await categoriesPromise()
-    const { data: products, error } = await productsPromise()
-
-
+const Navbar = () => {
     return (
         <nav className='container mx-auto my-5 px-5'>
             <div className="navbar bg-base-100">
@@ -34,13 +31,16 @@ const Navbar = async () => {
 
             </div>
             {/* links  */}
-            <Suspense fallback={<div className="animate-pulse w-32 h-8 bg-base-200 rounded-md"></div>}>
-                <NavLinks categories={categories} />
+            <Suspense fallback={<NavLinkSkeleton />}>
+                <NavLinks />
             </Suspense>
-            {
-                error ? <></>
-                    : <PriceSummery products={products} />
-            }
+
+
+
+            <Suspense fallback={<MarqueeSkeleton />}>
+                <PriceSummery />
+            </Suspense>
+
         </nav>
     );
 };

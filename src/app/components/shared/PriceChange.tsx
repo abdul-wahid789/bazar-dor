@@ -3,7 +3,6 @@ import { priceBangla } from '@/utils/englishBangla';
 import React from 'react';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { GoDash } from 'react-icons/go';
-import { SiPandoc } from 'react-icons/si';
 
 const PriceChange = ({ change }: { change: Change }) => {
     return (
@@ -17,7 +16,7 @@ const PriceChange = ({ change }: { change: Change }) => {
             }
             {
                 change.dir === 'down' &&
-                <span className='text-success flex items-center gap-1'>
+                <span className='text-primary flex items-center gap-1'>
                     <FaCaretDown /> {priceBangla(change.pct)} %
                 </span>
             }

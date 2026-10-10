@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 @plugin "daisyui";
 
 
@@ -42,4 +42,26 @@
 .table-zebra tbody tr:nth-child(even) td,
 .table-zebra tbody tr:nth-child(even) th {
     background-color: #05893E;
+}
+
+
+/* Custom Daisy UI Skeleton Override */
+.d-skeleton {
+  animation: skeleton-sweep 1.8s ease-in-out infinite;
+  background-image: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  /* Default dark mode gray. Change to #e5e7eb for light mode */
+  /* background-color: #374151; */
+}
+
+@keyframes skeleton-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

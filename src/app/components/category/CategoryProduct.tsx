@@ -5,15 +5,10 @@ import { priceBangla } from '@/utils/englishBangla';
 import React, { useState } from 'react';
 import ProductCard from '../shared/ProductCard';
 
-
-import { Select, ListBox } from "@heroui/react";
-
-
 const CategoryProduct = ({ products }: { products: IProduct[] }) => {
 
     const [filterProducts, setFilterProducts] = useState<IProduct[]>(products)
     const [sortValue, setSortValue] = useState<'low' | 'high' | 'default'>('default')
-
 
     const sortHandel = (value: string) => {
         const newValue = value as 'low' | 'high' | 'default';
