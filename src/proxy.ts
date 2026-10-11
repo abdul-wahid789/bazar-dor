@@ -8,20 +8,31 @@ export async function proxy(request: NextRequest) {
     const session = await auth.api.getSession({
         headers: await headers()
     })
-    const authRoutes = ["/sign-in", "/sign-up"]
 
-    const isProductRoute = request.nextUrl.pathname.startsWith("/product/");
-    const isAuthRoute = authRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
 
-    if (!session && isProductRoute) {
-        return NextResponse.redirect(
-            new URL(`/sign-in?callbackUrl=${request.nextUrl.pathname}`, request.url)
-        );
+    const pathname = request.nextUrl.pathname;
+
+
+    const authRoutes = ["/sign-in", "/sign-up"];
+    const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
+    const isProtectedRoute = pathname.startsWith("/product/") || pathname.startsWith("/profile");
+
+    if (!session) {
+        if (isProtectedRoute) {
+            return NextResponse.redirect(
+                new URL(`/sign-in?callbackUrl=${pathname}`, request.url)
+            );
+        }
+        return NextResponse.next();
+    }
+    if (session) {
+        if (isAuthRoute) {
+            return NextResponse.redirect(new URL('/', request.url));
+        }
+        return NextResponse.next();
     }
 
-    if (!session || isAuthRoute) {
-        return NextResponse.redirect(new URL('/', request.url))
-    }
+    return NextResponse.next();
 
 }
 
