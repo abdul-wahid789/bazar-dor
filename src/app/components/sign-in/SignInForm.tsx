@@ -1,5 +1,5 @@
 'use client'
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import { Button, FieldError, FieldGroup, Fieldset, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { signIn } from '@/lib/auth-client';
@@ -13,97 +13,97 @@ import { FaArrowLeftLong } from 'react-icons/fa6';
 
 
 const SignInForm = () => {
-     const router = useRouter();
-        const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-        const [password, setPassword] = useState("");
+    const router = useRouter();
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [password, setPassword] = useState("");
 
 
-        const [isSubmitting, setIsSubmitting] = useState(false);
-        const [isSubmittingGoogle, setIsSubmittingGoogle] = useState(false);
-        const [isSubmittingGithub, setIsSubmittingGithub] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmittingGoogle, setIsSubmittingGoogle] = useState(false);
+    const [isSubmittingGithub, setIsSubmittingGithub] = useState(false);
 
 
 
-        const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-            if (isSubmitting) return;
+        if (isSubmitting) return;
 
-            const params = new URLSearchParams(window.location.search);
-            const callbackUrl = params.get('callbackUrl') || '/';
+        const params = new URLSearchParams(window.location.search);
+        const callbackUrl = params.get('callbackUrl') || '/';
 
 
-            const formData = new FormData(e.currentTarget);
-            const data = Object.fromEntries(formData.entries())
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries())
 
-            setIsSubmitting(true);
+        setIsSubmitting(true);
 
-            try {
-                const { data: resData, error } = await signIn.email({
-                    email: data.email as string,
-                    password: data.password as string,
-                    rememberMe: true,
-                    callbackURL: callbackUrl,
-                });
+        try {
+            const { data: resData, error } = await signIn.email({
+                email: data.email as string,
+                password: data.password as string,
+                rememberMe: true,
+                callbackURL: callbackUrl,
+            });
 
-                if (error) {
-                    errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
-                } else if (resData) {
-                    successToast("সাইন-ইন সফল হয়েছে")
-                    router.push(callbackUrl);
-                    router.refresh();
-                }
-            } finally {
-                setIsSubmitting(false);
+            if (error) {
+                errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
+            } else if (resData) {
+                successToast("সাইন-ইন সফল হয়েছে")
+                router.push(callbackUrl);
+                router.refresh();
             }
-
-
-        };
-
-        const handelGoogle = async () => {
-            if (isSubmittingGoogle) return;
-            setIsSubmittingGoogle(true);
-
-            const params = new URLSearchParams(window.location.search);
-            const callbackUrl = params.get('callbackUrl') || '/';
-
-            try {
-                const { data: resData, error } = await signIn.social({
-                    provider: "google",
-                    callbackURL: callbackUrl,
-                });
-
-                if (error) {
-                    errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
-                } else if (resData) {
-                    successToast("সাইন-ইন সফল হয়েছে")
-                }
-            } finally {
-                setIsSubmittingGoogle(false);
-            }
-
+        } finally {
+            setIsSubmitting(false);
         }
-        const handelGithub = async () => {
-            if (isSubmittingGithub) return;
-            setIsSubmittingGithub(true);
-            const params = new URLSearchParams(window.location.search);
-            const callbackUrl = params.get('callbackUrl') || '/';
 
-            try {
-                const { data: resData, error } = await signIn.social({
-                    provider: "github",
-                    callbackURL: callbackUrl,
-                });
 
-                if (error) {
-                    errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
-                } else if (resData) {
-                    successToast("সাইন-ইন সফল হয়েছে")
-                }
-            } finally {
-                setIsSubmittingGithub(false);
+    };
+
+    const handelGoogle = async () => {
+        if (isSubmittingGoogle) return;
+        setIsSubmittingGoogle(true);
+
+        const params = new URLSearchParams(window.location.search);
+        const callbackUrl = params.get('callbackUrl') || '/';
+
+        try {
+            const { data: resData, error } = await signIn.social({
+                provider: "google",
+                callbackURL: callbackUrl,
+            });
+
+            if (error) {
+                errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
+            } else if (resData) {
+                successToast("সাইন-ইন সফল হয়েছে")
             }
+        } finally {
+            setIsSubmittingGoogle(false);
         }
+
+    }
+    const handelGithub = async () => {
+        if (isSubmittingGithub) return;
+        setIsSubmittingGithub(true);
+        const params = new URLSearchParams(window.location.search);
+        const callbackUrl = params.get('callbackUrl') || '/';
+
+        try {
+            const { data: resData, error } = await signIn.social({
+                provider: "github",
+                callbackURL: callbackUrl,
+            });
+
+            if (error) {
+                errorToast(error.message as string || "সাইন-ইন ব্যর্থ হয়েছে");
+            } else if (resData) {
+                successToast("সাইন-ইন সফল হয়েছে")
+            }
+        } finally {
+            setIsSubmittingGithub(false);
+        }
+    }
 
     return (
 
@@ -217,7 +217,7 @@ const SignInForm = () => {
                         )}
                     </button>
                 </div>
-               <p className='mt-5 text-center'>অ্যাকাউন্ট নেই? <Link href={'/sign-up'} className='text-primary'>সাইন আপ করুন</Link></p>
+                <p className='mt-5 text-center'>অ্যাকাউন্ট নেই? <Link href={'/sign-up'} className='text-primary'>সাইন আপ করুন</Link></p>
 
             </div>
 

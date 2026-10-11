@@ -9,8 +9,10 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
 import { FaArrowLeftLong } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
+     const router = useRouter();
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
@@ -45,6 +47,8 @@ const SignUpForm = () => {
                 errorToast(error.message || "সাইন আপ ব্যর্থ হয়েছে");
             } else if (resData) {
                 successToast("নতুন অ্যাকাউন্ট সফলভাবে তৈরি করা হয়েছে");
+                router.push('/');
+                router.refresh();
             }
         } finally {
             setIsSubmitting(false);
