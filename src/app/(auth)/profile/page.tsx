@@ -64,8 +64,8 @@ const ProfilePage = () => {
                 আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
             </p>
 
-            <div className='w-75 lg:w-120 w-full bg-base-200 p-3 lg:p-8 rounded-2xl my-5 mx-auto flex gap-2 justify-between items-center'>
-                <div className='flex gap-2 items-center justify-between'>
+            <div className='lg:w-120 w-full bg-base-200 p-3 lg:p-8 rounded-2xl my-5 mx-auto flex gap-2 justify-between items-center'>
+                <div className='flex gap-0.5 lg:gap-2 items-center justify-between'>
                     <div>
                         {session?.user.image ? (
                             <div className="">
@@ -101,7 +101,7 @@ const ProfilePage = () => {
 
 
 
-            <div className='w-75 lg:w-120 bg-base-200  p-3 lg:p-8 rounded-2xl my-5 mx-auto'>
+            <div className='lg:w-120 w-full bg-base-200  p-3 lg:p-8 rounded-2xl my-5 mx-auto'>
 
                 <Form onSubmit={onSubmit} >
                     <Fieldset>
