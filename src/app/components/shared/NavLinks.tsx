@@ -5,7 +5,7 @@ import NavLinkList from './NavLinkList';
 const NavLinks = async () => {
     const { data: categories } = await categoriesPromise()
     return (
-        <div className='flex ga-0.5 lg:gap-4 lg:text-lg mt-5 text-xs'>
+        <div className='flex gap-0.5 lg:gap-4 lg:text-lg mt-5 text-xs bg-red-50 mx-auto'>
             <NavLinkList categories={categories} />
         </div>
     );
