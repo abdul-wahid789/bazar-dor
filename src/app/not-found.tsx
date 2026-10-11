@@ -1,5 +1,13 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: "ত্রুটি | বাজার দর",
+  description: "আপনার অনুরোধের URL অকার্যকর।",
+};
+
+
 
 export default function NotFound() {
     return (

@@ -4,8 +4,23 @@ import { productPromise } from '@/lib/foods';
 import { IProduct, Market } from '@/types/foods';
 import { priceBangla, unitBangla } from '@/utils/englishBangla';
 import { halfNumberDisplay, priceDiff } from '@/utils/textModifier';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+
+export async function generateMetadata({ params }:
+    { params: Promise<{ productid: string }>}): Promise<Metadata> {
+    const { productid } = await params;
+    const { data: product, error } = await productPromise(productid);
+    if (error) {
+        return { title: 'খুঁজে পাওয়া যায়নি | বাজার দর' };
+    }
+    return {
+        title: `${product.nameBn} | বাজার দর`,
+        description: `আজকের বাজারে ${product.nameBn} এর বিস্তারিত দাম দেখুন।`,
+    };
+}
 
 
 const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: string }> }) => {

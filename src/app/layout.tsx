@@ -13,7 +13,7 @@ const hindSiliguri = Hind_Siliguri({
 
 export const metadata: Metadata = {
   title: "বাজার দর",
-  description: "Bazar Dor web app where daily prices are shown and the changes",
+  description: "বাজার দর ওয়েব অ্যাপ, যেখানে নিত্যপণ্যের দাম ও তার পরিবর্তন দেখানো হয়।",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

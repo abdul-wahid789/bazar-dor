@@ -13,7 +13,7 @@
    Implemented robust authentication using **Better Auth**, supporting Email/Password, Google, and GitHub logins. Includes a custom Next.js middleware proxy that protects specific routes (like `/product/[slug]`) and automatically redirects users back to their intended page (`callbackUrl`) after a successful login.
 
 2. **Dynamic Price Ticker & Market Trends**
-   Features an infinite-scrolling marquee in the navbar displaying live price updates. The home page dynamically highlights daily market trends, categorizing products into "আজ দাম বেড়েছে ▲" (Top Risers) and "আজ দাম কমেছে ▼" (Top Fallers).
+   Features an infinite-scrolling marquee in the navbar displaying live price updates. The home page dynamically highlights daily market trends, categorizing products into "আজ দাম বেড়েছে ▲" and "আজ দাম কমেছে ▼".
 
 3. **Advanced Sorting with Bengali Numerals**
    Includes a custom sorting feature allowing users to order category items by price (Low to High / High to Low). The sorting algorithm features custom utility functions designed to accurately parse and compute native Bengali numerals.

@@ -19,13 +19,13 @@ const NavLinkList = ({ categories }: { categories: ICategory[] }) => {
         <>
             {
                 categories.map(category => <Link href={`/category/${category.slug}`} key={category.slug}
-                    className={`hover:bg-base-300 mx-auto rounded-md px-2 py-1 bg-base-200 lg:bg-transparent flex flex-col lg:flex-row items-center
+                    className={`hover:bg-base-300 mx-auto lg:mx-0 rounded-md px-2 py-1 bg-base-200 lg:bg-transparent flex flex-col lg:flex-row items-center
                     ${active(`/category/${category.slug}`)}
                     `}>
                     <span>
                         {category.icon}
                     </span>
-                    <span>
+                    <span className='line-clamp-1'>
                         {category.nameBn}
                     </span>
                 </Link>)

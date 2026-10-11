@@ -8,21 +8,23 @@ export async function proxy(request: NextRequest) {
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    const authRoutes = ["/sign-in", "/sign-up"]
 
-    const isProtectedRoute = request.nextUrl.pathname.startsWith("/product/");
+    const isProductRoute = request.nextUrl.pathname.startsWith("/product/");
+    const isAuthRoute = authRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
 
-    if (!session && isProtectedRoute) {
+    if (!session && isProductRoute) {
         return NextResponse.redirect(
             new URL(`/sign-in?callbackUrl=${request.nextUrl.pathname}`, request.url)
         );
     }
 
-    if (!session) {
+    if (!session || isAuthRoute) {
         return NextResponse.redirect(new URL('/', request.url))
     }
 
 }
 
 export const config = {
-    matcher: ['/product/:path*', '/profile'],
+    matcher: ['/product/:path*', '/profile', '/sign-in', '/sign-up'],
 }

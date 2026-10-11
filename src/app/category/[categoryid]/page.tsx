@@ -3,7 +3,24 @@ import TryAgain from '@/app/components/error/TryAgain';
 import { categoryProductPromise } from '@/lib/foods';
 import { IProduct } from '@/types/foods';
 import { priceBangla } from '@/utils/englishBangla';
+import { Metadata } from 'next';
 import React from 'react';
+
+
+export async function generateMetadata({ params }:
+    { params: Promise<{ categoryid: string }>}): Promise<Metadata> {
+    const { categoryid } = await params;
+
+    const { data: products, error } = await categoryProductPromise(categoryid);
+
+    if (error) {
+        return { title: 'খুঁজে পাওয়া যায়নি | বাজার দর' };
+    }
+    return {
+        title: `${products[0].categoryNameBn} | বাজার দর`,
+        description: `আজকের বাজারে ${products[0].categoryNameBn} এর বিস্তারিত দাম দেখুন।`,
+    };
+}
 
 const CategoryPage = async ({ params }: { params: Promise<{ categoryid: string }> }) => {
     const { categoryid } = await params
