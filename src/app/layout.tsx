@@ -20,8 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
   return (
     <html
-      lang="en"
+      lang="bn"
       data-theme="bazar-dor"
+      data-scroll-behavior="smooth"
       className={`${hindSiliguri.className} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col">

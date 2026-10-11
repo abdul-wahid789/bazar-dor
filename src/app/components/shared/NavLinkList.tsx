@@ -14,15 +14,20 @@ const NavLinkList = ({ categories }: { categories: ICategory[] }) => {
         }
         return ""
     }
-    
+
     return (
         <>
             {
                 categories.map(category => <Link href={`/category/${category.slug}`} key={category.slug}
-                    className={`hover:bg-base-300 rounded-md px-2 py-1 bg-base-200 lg:bg-transparent flex items-center
+                    className={`hover:bg-base-300 rounded-md px-2 py-1 bg-base-200 lg:bg-transparent flex flex-col lg:flex-row items-center
                     ${active(`/category/${category.slug}`)}
                     `}>
-                    {category.icon} {category.nameBn}
+                    <span>
+                        {category.icon}
+                    </span>
+                    <span>
+                        {category.nameBn}
+                    </span>
                 </Link>)
             }
         </>

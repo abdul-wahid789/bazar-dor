@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { Suspense } from 'react';
 import TodayDate from './TodayDate';
 import NavLinks from './NavLinks';
-import { categoriesPromise, productsPromise } from '@/lib/foods';
 import PriceSummery from './PriceSummery';
 import SessionUser from './SessionUser';
 import NavLinkSkeleton from '../skeleton/NavLinkSkeleton';
@@ -21,7 +20,7 @@ const Navbar = () => {
                         </div>
                         <div>
                             <div className="block text-xl"><h1 className='text-lg font-bold'>বাজার দর</h1></div>
-                            <div className='text-xs lg:text-sm text-black/50'><TodayDate /></div>
+                            <div className='text-xs lg:text-sm font-light text-black/50'><TodayDate /></div>
 
                         </div>
                     </div>

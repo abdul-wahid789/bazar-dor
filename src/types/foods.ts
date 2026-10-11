@@ -35,5 +35,6 @@ export interface IProduct {
     lastMonth: number
     change: Change
     markets: Market[]
+    error?: string
 }
 

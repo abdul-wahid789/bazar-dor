@@ -23,6 +23,7 @@ const Banner = () => {
             </div>
             <div>
                 <Image src={BannerImg} alt="banner" width={500} height={500}
+                    priority
                     className="w-100 object-contain"></Image>
             </div>
         </div>

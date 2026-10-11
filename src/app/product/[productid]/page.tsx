@@ -34,7 +34,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: str
                     <Link href={`/category/${product.category}`}>{product.categoryNameBn}</Link> &gt;
                     <p>{product.nameBn}</p>
                 </div>
-                <div className='bg-base-200 rounded-2xl p-2 lg:p-8 flex justify-between'>
+                <div className='bg-base-200 rounded-2xl p-2 lg:p-8 flex justify-between gap-2'>
                     <div className='flex items-center gap-3'>
                         <div className='bg-primary/5 p-2 lg:p-5 h-fit rounded-2xl text-2xl lg:text-4xl'>
                             {product.image}
@@ -83,9 +83,9 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: str
                     {/* all market price table  */}
                     <h1 className='text-2xl font-bold'>বাজারভিত্তিক আজকের দাম</h1>
                     <div className="overflow-x-auto">
-                        <table className="table text-lg border-black/10 border">
+                        <table className="table  text-base lg:text-lg border-black/10 border">
                             {/* head */}
-                            <thead className='font-bold text-lg'>
+                            <thead className='font-bold text-base lg:text-lg'>
                                 <tr >
                                     <th>বাজার</th>
                                     <th>বিভাগ</th>
@@ -94,7 +94,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productid: str
                                     <th>গড়</th>
                                 </tr>
                             </thead>
-                            <tbody className=''>
+                            <tbody className='font-light'>
                                 {/* row  */}
                                 {
                                     markets.map((market, i) => <tr key={i} className='even:bg-primary/5'>

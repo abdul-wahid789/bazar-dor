@@ -17,7 +17,10 @@ export async function proxy(request: NextRequest) {
         );
     }
 
-    return NextResponse.next();
+    if (!session) {
+        return NextResponse.redirect(new URL('/', request.url))
+    }
+
 }
 
 export const config = {

@@ -14,19 +14,19 @@ const PriceSummery = async () => {
         <Marquee pauseOnHover={true} speed={100} className='py-2 mt-3 text-sm bg-base-200 rounded-md'>
             {
                 error ? (
-                    arr.map((x, i) => <span  key={i} className='text-error px-3 flex gap-1'>
+                    arr.map((x, i) => <span key={i} className='text-error px-3 flex gap-1'>
                         কিছু একটা সমস্যা হয়েছে, তাই দাম দেখানো যাচ্ছে না</span>)
                 )
                     :
                     (products.map(product => <Link className='flex' key={product.id} href={`/product/${product.id}`}>
                         <div className='px-3 flex gap-1'>
                             <span>{product.categoryIcon}
-                                <span className='font-semibold'>
-                                    {` ${product.nameBn} `}
-                                </span>
-                                {`${priceBangla(product.today)} টাকা/${unitBangla(product.unit)}`}
+                                <span className='font-semibold'>{product.nameBn}</span>
                             </span>
-                            <PriceChange change={product.change} />
+                            <span className='flex gap-1'>
+                                <span><span className='font-light'>{priceBangla(product.today)}</span> টাকা/{unitBangla(product.unit)}</span>
+                                <span className='font-light'><PriceChange change={product.change} /></span>
+                            </span>
                         </div>
                     </Link>))
             }

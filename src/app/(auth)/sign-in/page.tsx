@@ -113,7 +113,7 @@ const SignInPage = () => {
                 বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
             </p>
 
-            <div className=' max-w-120 bg-base-200 p-8 rounded-2xl my-5 mx-auto'>
+            <div className='lg:w-120 bg-base-200 p-8 rounded-2xl my-5 mx-auto'>
 
                 <Form onSubmit={onSubmit} >
                     <Fieldset>

@@ -93,13 +93,13 @@ const SignUpPage = () => {
     return (
 
 
-        <section className='my-5 flex flex-col items-center'>
+        <section className='my-5 flex flex-col items-center '>
             <h1 className="text-2xl font-bold text-center">অ্যাকাউন্ট তৈরি করুন</h1>
             <p className="text-sm lg:text-base text-center text-black/50">
                 বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন
             </p>
 
-            <div className='max-w-120 bg-base-200 p-8 rounded-2xl my-5 mx-auto'>
+            <div className='lg:w-120 bg-base-200 p-8 rounded-2xl my-5 mx-auto'>
 
                 <Form
                     validationErrors={{
@@ -124,7 +124,7 @@ const SignUpPage = () => {
                                 }}
                             >
                                 <Label className="text-lg">নাম</Label>
-                                <Input placeholder="যেমন: রহিম উদ্দিন" />
+                                <Input aria-label="name" placeholder="যেমন: রহিম উদ্দিন" />
                                 <FieldError />
                             </TextField>
 
@@ -140,7 +140,7 @@ const SignUpPage = () => {
                                 }}
                             >
                                 <Label className="text-lg">ইমেইল</Label>
-                                <Input placeholder="you@example.com" />
+                                <Input aria-label="email" placeholder="you@example.com" />
                                 <FieldError />
                             </TextField>
 
@@ -161,6 +161,7 @@ const SignUpPage = () => {
                                 <Label className="text-lg">পাসওয়ার্ড</Label>
                                 <InputGroup>
                                     <InputGroup.Input
+                                        aria-label="password"
                                         className="w-full"
                                         type={isPasswordVisible ? "text" : "password"}
                                         placeholder="কমপক্ষে ৮ অক্ষর"
@@ -207,6 +208,7 @@ const SignUpPage = () => {
                                 <Label className="text-lg">পাসওয়ার্ড নিশ্চিত করুন</Label>
                                 <InputGroup>
                                     <InputGroup.Input
+                                        aria-label="confirmPassword"
                                         className="w-full"
                                         type={isConfirmPasswordVisible ? "text" : "password"}
                                         placeholder="পাসওয়ার্ড পুনরায় লিখুন"
@@ -252,7 +254,7 @@ const SignUpPage = () => {
                 <p className='divider text-black/50'>অথবা</p>
                 <div className='flex flex-col lg:flex-row justify-between items-center gap-2'>
                     <button
-                        className="btn-outline border-black/10 btn w-full lg:w-1/2  rounded-2xl"
+                        className="btn-outline border-black/10 btn w-full lg:w-1/2 rounded-2xl"
                         disabled={isSubmitting}
                         onClick={handelGoogle}
                     >

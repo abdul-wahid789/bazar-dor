@@ -49,6 +49,7 @@ const ProfilePage = () => {
                 errorToast(error.message || "নাম পরিবর্তন হয়নি");
             } else if (resData) {
                 successToast("নাম পরিবর্তন হয়েছে");
+                router.refresh();
             }
         } finally {
             setIsSubmitting(false);
@@ -63,8 +64,8 @@ const ProfilePage = () => {
                 আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
             </p>
 
-            <div className='w-150 bg-base-200 p-8 rounded-2xl my-5 mx-auto flex gap-2 justify-between items-center'>
-                <div className='flex gap-2 items-center'>
+            <div className='w-75 lg:w-120 w-full bg-base-200 p-3 lg:p-8 rounded-2xl my-5 mx-auto flex gap-2 justify-between items-center'>
+                <div className='flex gap-2 items-center justify-between'>
                     <div>
                         {session?.user.image ? (
                             <div className="">
@@ -73,7 +74,7 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                         ) : (
-                            <div className="bg-primary text-primary-content w-15 h-15 rounded-lg flex items-center justify-center">
+                            <div className="bg-primary text-primary-content w-10 h-10 lg:w-15 lg:h-15  rounded-lg flex items-center justify-center">
                                 <span className="text-2xl font-semibold text-center">
                                     {session?.user?.name ? session.user.name.charAt(0).toUpperCase() : "U"}
                                 </span>
@@ -81,24 +82,26 @@ const ProfilePage = () => {
                         )}
                     </div>
                     <div>
-                        <h2 className='text-lg font-bold'>{session?.user.name}</h2>
-                        <p className='text-black/50'>{session?.user.email}</p>
+                        <h2 className='lg:text-lg font-bold'>{session?.user.name}</h2>
+                        <p className='text-xs lg:text-base text-black/50'>{session?.user.email}</p>
                     </div>
                 </div>
                 <div>
                     <button
                         onClick={handleSignOut}
                         disabled={isLoggingOut}
-                        className="text-error hover:bg-error/10 mt-1 btn-outline btn border-error "
+                        className="text-error hover:bg-error/10 mt-1 btn-xs  btn-outline btn border-error "
                     >
-                        {isLoggingOut ? <span className="loading loading-spinner loading-xs"></span> : <span className='text-base flex gap-2 items-center'><IoMdExit />সাইন আউট</span>}
+                        {isLoggingOut ? <span className="loading loading-spinner loading-xs"></span>
+                        :
+                        <span className='lg:text-base flex gap-1 lg:gap-2 items-center'><IoMdExit />সাইন আউট</span>}
                     </button>
                 </div>
             </div>
 
 
 
-            <div className='w-150 bg-base-200 p-8 rounded-2xl my-5 mx-auto'>
+            <div className='w-75 lg:w-120 bg-base-200  p-3 lg:p-8 rounded-2xl my-5 mx-auto'>
 
                 <Form onSubmit={onSubmit} >
                     <Fieldset>

@@ -6,6 +6,9 @@ async function fetcher(url: string) {
     try {
         const res = await fetch(url)
         const data = await res.json()
+        if (data.length === 0 || data.error) {
+            return { data: [], error: "no item" }
+        }
         return { data, error: "" }
     } catch (e) {
         return { data: [], error: String(e) }
